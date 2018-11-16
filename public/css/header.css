@@ -1,0 +1,223 @@
+.header {
+    width: 100%;
+    height: 120px;
+    background-color: #6A6A6A;
+}
+
+.header .top {
+    height: 60px;
+    display: flex;
+}
+
+.header .logo h5 {
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 60px;
+    text-transform: uppercase;
+}
+
+.header .menu-header {
+    float: right;
+    position: relative;
+}
+
+.header .menu-header li {
+    float: left;
+    width: auto;
+    height: 30px;
+}
+
+.menu-header > li > a {
+    color: #fff;
+    font-size: 12px;
+    padding: 0px 10px;
+    line-height: 30px;
+    border-right: 1px solid #97BE63;
+}
+
+.menu-header > li:first-child a {
+    color: #97BE63;
+    border-right: none;
+}
+
+.menu-header > li:last-child a {
+    border-right: none;
+}
+
+.menu-header > li:hover .sub-menu {
+    display: block;
+}
+
+.menu-header .sub-menu {
+    top: 30px;
+    right: 0px;
+    width: 350px;
+    display: none;
+    overflow-y: auto;
+    max-height: 300px;
+    border-radius: 5px;
+    overflow-x: hidden;
+    position: absolute;
+    z-index: 9;
+    background-color: #fff;
+}
+
+.menu-header .sub-menu ul:before {
+    bottom: 98%;
+    left: 12px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: transparent;
+    border-width: 8px;
+    margin-left: -8px;
+}
+
+.menu-header .sub-menu li{
+    padding: 0;
+    width: 100%;
+    height: 35px;
+}
+
+.menu-header .sub-menu .title {
+    float: left;
+    font-size: 14px;
+    padding-left: 10px;
+    line-height: 35px;
+    font-weight: bold;
+}
+
+.menu-header .sub-menu .action-menu {
+    float: right;
+    font-size: 12px;
+    padding-right: 10px;
+    line-height: 35px;
+}
+
+.sub-menu .action-menu .edit {
+    color: #D90000;
+    text-transform: lowercase;
+    padding-right: 3px; 
+}
+
+.sub-menu .action-menu .edit:hover {
+    text-decoration: underline;
+    text-decoration-color: red;
+}
+
+.menu-header .sub-menu .action a:first-child {
+    padding-right: 5px;
+    border-right: 1px solid #000;
+}
+
+.menu-header .sub-menu .action a {
+    text-decoration: none;
+}
+
+.header .bottom {
+    height: 60px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.menu {
+    width: 100%;
+    margin-left: 20px;
+}
+
+
+.menu li {
+    float: left;
+    height: 40px;
+    min-width: 110px;
+    margin-right: 5px;
+    text-align: center;
+    background-color: #97BE63;
+    border: 1px solid #97BE63;
+    border-radius: 5px 5px 0 0;
+}
+
+.right-menu {
+    float: right !important;
+    margin-right: 1.5rem !important;
+}
+
+.menu li a {
+    color: #fff;
+    font-size: 14px;
+    line-height: 40px;
+    font-weight: bold;
+    font-family: 'Trebuchet MS';
+}
+
+.menu li a:hover {
+    color: #212529;
+    text-decoration: none;
+}
+
+.menu li.active {
+    background-color: #F2F2F2;
+    border: 1px solid #F2F2F2;
+}
+
+.menu li.active a {
+    color: #212529;
+}
+
+.tabs li {
+    float: left;
+    height: 40px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: 5px;
+    text-align: center;
+    background-color: #97BE63;
+    border: 1px solid #97BE63;
+    border-radius: 5px 5px 0 0;
+}
+
+.tabs {
+    width: 100%;   
+}
+
+.tabs li a {
+    color: #fff;
+    font-size: 13px;
+    line-height: 40px;
+    font-weight: bold;
+}
+
+.tabs li a:hover {
+    color: #212529;
+    text-decoration: none;
+}
+
+.tabs li.active {
+    background-color: #f2f2f2;
+    border: 1px solid #F2F2F2;
+    box-shadow: -1px -1px 8px 0px #dddddd;
+}
+
+.tabs li.active a {
+    color: #212529;
+}
+
+.tabs li.disabled {
+    background-color: #cdcdcd;
+    border-color: #ccc;
+}
+
+.tabs li.disabled a {
+    cursor: not-allowed;
+}
+
+.sub-menu .account{
+    color: #136F9A !important;
+    font-size: 10px;
+    border-left: 1px solid #2D2D2D;
+    padding-left: 5px;
+}

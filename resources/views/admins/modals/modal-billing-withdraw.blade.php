@@ -1,0 +1,52 @@
+<div class="modal fade" id="modalWithdrawCredit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form id="withdrawCreditForm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titleModalWithdrawCredit">{{ trans('client.withdraw_credit') }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="contentModalAddCredit">
+                    <div class="form-group row justify-content-center">
+                        <label class="col-xs col-sm-3 col-md-2 col-form-label">{{ trans("client.amount") }}</label>
+                        <div class="col-xs col-sm-3 col-md-5">
+                            <input
+                                type="number"
+                                name="withdraw_credit"
+                                step=".01"
+                                min="0"
+                                @if ($client) max="{{ $client->getBalance() }}" value="0.00" @else value="0.00" @endif
+                                class="form-control input-custom"
+                                data-rule-required="true"
+                                data-msg-required="{{ trans("validationForm.credit_amount.required")}}"
+                                data-rule-max="{{ $client ? $client->credits : 0 }}"
+                                data-msg-max="{{ trans("client.credits_error.not_enough")}}"
+                            />
+                            <label id="withdraw_credit-error" class="error" for="withdraw_credit">{{ $errors->first('credits') }}</label>
+                        </div>
+                        <label class="col-xs col-sm-3 col-md-2 col-form-label">@if($client) {{ $client->currency }} @else SGD @endif</label>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label class="col-xs col-sm-3 col-md-2 col-form-label">{{ trans('client.description') }}</label>
+                        <div class="col-xs-2 col-sm-6 col-md-7">
+                            <div class="justify-content-start">
+                                <input type="text" name="withdraw_description"
+                                    class="form-control input-custom"
+                                    data-rule-required="true"
+                                    data-msg-required="{{ trans("validationForm.description.required")}}"
+                                    value="{{ old('description') }}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="btnModalWithdrawClose">{{ trans("client.cancel") }}</button>
+                    <button type="button" class="btn btn-example"
+                        id="btnModalWithdrawSave">{{ trans("client.save") }}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+body {
+    background-color : #fff;
+}
+
+.error-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.error-actions {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.error-button {
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #97BE63;
+    border: 1px solid #97BE63;
+}
+
+.error-actions .btn {
+    margin-right: 10px;
+}

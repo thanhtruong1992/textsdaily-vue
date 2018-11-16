@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+}
+.template-pdf {
+    padding: 15px;
+}
+.charts {
+    text-align: center;
+    margin: auto;
+}
+.chart {
+    border: 1px solid #000;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.chart:last-child {
+    margin-right: 0;
+}
+
+.chart-pie {
+    width: 350px;
+    height: 200px;
+}
+
+.chart-col {
+    width: 400px;
+    height: 200px;
+}
+
+.chart .title {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.info-campaign {
+    padding-bottom: 10px;
+    width: 600px;
+    margin: 0 auto;
+}
+
+.info-campaign p {
+    padding: 0;
+    margin: 0;
+    border: 1px solid #000;
+}
+
+.info-campaign p:first-child {
+    border-bottom: 0;
+}
+
+.info-campaign p:last-child {
+    border-top: 0;
+}
+
+.info-campaign .title {
+    font-weight: bold;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.info-campaign span {
+    font-size: 14px;
+}
+
+.table-data {
+    margin-top: 20px;
+}
+
+.table-custom {
+    width: 100%;
+}
+
+.table-custom thead th{
+    background-color: #97BE63;
+    font-size: 14px;
+    color: #fff;
+}
+
+.table-custom td,
+.table-custom th {
+    border: 1px solid #000;
+    border-left: 0;
+    padding: 5px 7px;
+    text-align: left;
+}
+
+.table-custom tr td,
+.table-custom tr:first-child th {
+    border-bottom: 0;
+}
+
+.table-custom tr:last-child td{
+    border-bottom: 1px solid #000;
+}
+
+.table-custom td:first-child,
+.table-custom th:first-child {
+    border-left: 1px solid #000;
+}
+
+.table-custom tbody td {
+    color: #000;
+    font-size: 14px;  
+}
+
+.table-custom thead th {
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+tr {
+    page-break-inside: avoid; 
+    page-break-after: auto;
+}
+
+tr {
+    page-break-inside: avoid;
+}

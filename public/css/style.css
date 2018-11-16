@@ -1,0 +1,220 @@
+/*----------- Reset CSS -----------------*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    vertical-align: baseline;
+    font-size: 100%;
+}
+body, .form-control {
+    color:#555;
+    font-size: 12px;
+    font-family: Arial;
+    background-color: #EEEEEE;
+}
+small {
+    font-size: 80%;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+:focus {
+    outline: 0;
+}
+ins {
+    text-decoration: none;
+}
+del {
+    text-decoration: line-through;
+}
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+a {
+    text-decoration:  none;
+}
+
+.clearfix:after {
+    height: 0;
+    clear: both;
+    content: ".";
+    display: block;
+    line-height: 0;
+    visibility: hidden;
+}
+
+.clearfix {
+    clear: both;
+    display: block;
+}
+
+html[xmlns] .clearfix {
+    display: block;
+}
+
+* html .clearfix {
+    height: 1%;
+}
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+/*---------------- CSS Login ------------------*/
+.register {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.bg-login {
+    height: 100%;
+}
+
+.height-full {
+    height: 100%;
+}
+
+.register .show-message {
+    width: 320px;
+    height: auto;
+}
+
+.register .content {
+    width: 320px;
+    height: auto;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 1px 1px 2px #595959;
+}
+
+.g-recaptcha {
+    transform:scale(0.82);
+    -webkit-transform:scale(0.82);
+    transform-origin:0 0;
+    -webkit-transform-origin:0 0;
+}
+
+.form-register {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #F4F4ED;
+    border: 1px solid #c4c4c4;
+}
+
+.form-register h5 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    margin-top: 10px;
+}
+
+.form-register label {
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-register input {
+    border-radius: 0;
+}
+
+.btn {
+    font-size: 13px;
+}
+.btn-register {
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0;
+    font-weight: bold;
+    background-color: #8DBD6A;
+    border: 1px solid #8DBD6A;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.error-register {
+    color: #B60000;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.error {
+    color: #B60000 !important;
+}
+
+.logo {
+    width: 280px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.forgot-password {
+    font-size: 12px;
+    color: #555;
+    text-decoration: underline;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.forgot-password:hover {
+    color: #523922;
+}
+
+.return-user {
+    font-size: 13px;
+    text-decoration: underline;
+}
+
+.display-block {
+    display: block;
+    height: 100vh;
+}
+
+.mid-center {
+    left: calc(50% - 150px);
+    top: calc(50% - 40px);
+}
+.font-15rem {
+    font-size: 1.5rem;
+}
+.border-main-color {
+    border-color: #97BE63 !important;
+}
+@media screen and (max-width: 768px) {
+    .mid-center {
+        left: calc(50% - 150px);
+    }
+}
+@media screen and (max-width: 480px) {
+    .mid-center {
+        left: calc(50% - 110px);
+    }
+}
+.short-link {
+    word-break: break-all;
+}
+
+.total-click {
+    width: 70px !important;
+}
