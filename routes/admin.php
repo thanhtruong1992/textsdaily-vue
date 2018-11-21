@@ -7,6 +7,7 @@ Route::group(['prefix' => '/', 'as' => 'admin.'], function () {
         'prefix' => '',
         'middleware' => 'auth.admin'
     ], function() {
-        Route::get('/me', 'Admin\LoginController@getMe');
+        Route::get('/me', 'Admin\LoginController@getMe');  
+        Route::get('/dashboard', 'Admin\DashBoardController@dashboard');
     });
 });

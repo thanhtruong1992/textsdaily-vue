@@ -1,7 +1,8 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <Header v-bind:user="user"></Header>
+      <Header v-bind:user="user"></Header> 
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -20,9 +21,8 @@ export default {
       .catch(err => {
         this.$router.push("/login");
       });
-
     return {
-      user: JSON.parse(localStorage.getItem('auth'))
+      user: JSON.parse(localStorage.getItem('auth')),
     };
   }
 };

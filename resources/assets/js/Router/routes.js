@@ -4,12 +4,19 @@ Vue.use(VueRouter);
 
 import Main from '../components/Main';
 import Login from '../components/Auth/Login';
+import Dashboard from '../components/Admin/Dashboard/js/index.vue';
 
 const routes = [
     {
         path: '/',
         name: 'main',
-        component: Main
+        component: Main,
+        children : [
+            {
+                path: '/dashboard',
+                component: Dashboard
+            }
+        ]
     },
     {
         path: '/login',

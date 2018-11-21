@@ -49,6 +49,8 @@
         <div id="root">
             <router-view></router-view>
         </div>
+        <script src="js/googleChart.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+
     </body>
 </html>
