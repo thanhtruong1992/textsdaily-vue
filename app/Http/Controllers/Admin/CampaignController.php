@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Services\Campaign\ICampaignService;
@@ -312,7 +312,6 @@ class CampaignController extends Controller {
     public function totalSend() {
         try {
             $result = $this->campaignService->totalSendCampaignOfUsers($this->request);
-
             return $result;
         }catch (\Exception $e) {
             return [];

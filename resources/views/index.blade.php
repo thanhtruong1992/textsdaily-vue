@@ -9,6 +9,7 @@
         <title>Outlet for SPA</title>
 
         <link rel="stylesheet" type="text/css" href="css/app.css">
+        <link rel="stylesheet" href="css/spin.css" />
         <?php
             
         ?>
@@ -51,6 +52,6 @@
         </div>
         <script src="js/googleChart.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-
+        <script src="js/spin.js"></script>
     </body>
 </html>
