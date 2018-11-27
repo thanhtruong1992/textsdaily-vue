@@ -2,17 +2,14 @@ import ApiService from './index';
 
 class DashboardApi {
 
-    index () {
+    totalSend (data) {
         return new Promise((resolve, reject) => {
-            ApiService.get('/dashboard')
+            ApiService.get('/campaigns/total-send', data)
                 .then(res => {
-                    var data = res.data.data;
-                    localStorage.setItem('dashboard', JSON.stringify(data));
-                    resolve(data);
+                    resolve(res.data);
                 })
                 .catch(err => {
-                    localStorage.removeItem('dashboard');
-                    reject(err.response.data);
+                    reject(errerr.response.data);
                 });
         });
     }

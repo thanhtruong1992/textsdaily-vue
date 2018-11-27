@@ -22,5 +22,7 @@ Route::group(['prefix' => '/', 'as' => 'admin.'], function () {
             Route::put('/', 'Admin\ClientController@update');
             Route::post('/delete', 'Admin\ClientController@delete');
         });
+
+        Route::get ( '/campaigns/total-send', 'Admin\CampaignController@totalSend' );
     });
 });

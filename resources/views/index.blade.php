@@ -10,9 +10,7 @@
 
         <link rel="stylesheet" type="text/css" href="css/app.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
-        <?php
-            
-        ?>
+
         <script>
             window.trans = <?php
                 // get name folder
@@ -52,6 +50,6 @@
         </div>
         <script src="js/googleChart.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-
+        <script src="js/spin.js"></script>
     </body>
 </html>

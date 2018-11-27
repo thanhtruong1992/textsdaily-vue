@@ -8,7 +8,12 @@ axios.defaults.headers.common['Accept'] = 'application/json';
 class ApiService {
     get (path, params = null) {
         return new Promise((resolve, reject) => {
-            axios.get(path, params)
+            axios.get(
+                path, 
+                {
+                    params: params
+                }
+            )
                 .then(resolve)
                 .catch(reject);
         });
