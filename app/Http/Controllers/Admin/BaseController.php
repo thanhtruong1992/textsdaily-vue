@@ -22,8 +22,9 @@ class BaseController
      * FN response accept 
      * @return object
      */
-    public function accept() {
+    public function accept($message = null) {
         return response()->json([
+            "message" => $message,
             "status" => true
         ], 202)->header('Content-Type', 'application/json');
     }

@@ -22,17 +22,17 @@ class ApiService {
         });
     }
     
-    put () {
+    put (path, params) {
         return new Promise((resolve, reject) => {
-            axios.post(path, params)
+            axios.put(path, params)
                 .then(resolve)
                 .catch(reject);
         });
     }
     
-    destroy (path, id) {
+    destroy (path) {
         return new Promise((resolve, reject) => {
-            axios.post(path, params)
+            axios.delete(path)
                 .then(resolve)
                 .catch(reject);
         });

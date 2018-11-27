@@ -1,0 +1,93 @@
+<div class="main">
+    <div class="main-title">
+        <h1>{{ $t('client.client_list') }}</h1>
+    </div>
+    <div class="main-content">
+        <div class="header-button">
+            <div class="col">
+                <div class="row justify-content-start">
+                    <a id="deleteClient" class="client-action mr-1 ml-2" v-on:click="isOpen = true">
+                        <u>{{ $t("client.delete") }}</u>
+                    </a>
+                    <a id="enableClient" class="client-action mr-1 ml-2" href="#">
+                        <u>{{ $t("client.enable") }}</u>
+                    </a>
+                    <a id="disableClient" class="client-action mr-1 ml-2" href="#">
+                        <u>{{ $t("client.disable") }}</u>
+                    </a>
+                    <label class="custom-control custom-checkbox ml-2">
+                        <input type="checkbox" class="custom-control-input frmClientCheck" value="checkAll" id="frmClientCheckAll"/>
+                        <span class="custom-control-label"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row justify-content-end">
+                    <a v-if="currentUser.type == 'GROUP1'" class="btn btn-example" href="#">{{ $t("client.new") }}</a>
+                    <a v-if="currentUser.type != 'GROUP1'" class="btn btn-example" href="#">{{ $t("client.new_api_account") }}</a>
+                    <a v-if="currentUser.type != 'GROUP1'" class="btn btn-example" href="">{{ $t("client.new") }}</a>
+                    <a v-if="currentUser.type != 'GROUP1'" class="btn btn-example" href="#">{{ $t("client.new_reader") }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="content-data">
+            <div class="col">
+                <div class="row client-row" v-if="clients.length > 0" v-for="client in clients">
+                    <div class="col-1 billing-col">
+                        <label class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input frmClientCheck" :value="client.id"/>
+                            <span class="custom-control-label"></span>
+                        </label>
+                    </div>
+                    <div class="col-2 billing-col">
+                        <div class="inline-block padding-block-md">
+                            <img 
+                                class="img-fluid rounded img-client"
+                                alt=""
+                                src="/images/no-image.jpg"
+                            />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <label class="custom-control m-t-sm h5"><b>{{ client.name }}</b></label>
+                        </div>
+                        <div class="row">
+                            <div class="col-1 m-t-sm">
+                                <i class="custom-control fa fa-envelope" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-sm-6 m-t-sm">
+                                <label class="">
+                                    {{ client.email }}
+                                    <span class="badge badge-secondary" v-if="client.status == 'DISABLED'">{{ client.status }}</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-1 m-t-xs">
+                                <i class="custom-control fa fa-map-marker" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-sm-6 m-t-xs">
+                                <label class="">{{ client.country }}</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-1 m-t-xs">
+                                <i class="custom-control fa fa-globe" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-sm-6 m-t-xs">
+                                <label class="">{{ client.time_zone }}</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 m-t-xs">
+                                <a class="custom-control m-t-xs" href="#"><u>{{ $t("client.edit_client") }}</u></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <modal-custom v-show="isOpen" title="Delete Client" content="Are you sure to delete the selected clients?" v-bind:is-open="isOpen" :accept="deleteClient" :cancel="() => {isOpen = false}"></modal-custom>
+</div>

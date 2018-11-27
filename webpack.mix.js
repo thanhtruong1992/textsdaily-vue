@@ -14,12 +14,12 @@ let mix = require('laravel-mix');
 mix.js('resources/assets/js/index.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css/app.css')
    .options({
-      processCssUrls: false
+      processCssUrls: true
    })
+   .copy('node_modules/font-awesome-sass/assets/fonts', 'public/fonts')
    .styles([
-      'public/css/app.css',
       'public/css/style.css',
       'public/css/header.css',
       'public/css/main.css',
       'public/css/spin.css'
-   ], 'public/css/app.css');
+   ], 'public/css/index.css');

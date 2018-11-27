@@ -79,6 +79,7 @@ export default {
           password: this.password
         }).then(res => {
             // redirect to dashboard
+            this.$router.push("/dashboard");
         }).catch(err => {
             if(err.message) {
                 Notification.show('error', {

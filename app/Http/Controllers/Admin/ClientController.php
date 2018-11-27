@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Services\Auth\IAuthenticationService;
@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Response;
 use Carbon\Carbon;
 use Validator;
 
-class ClientController extends Controller {
+class ClientController extends BaseController {
 
     /**
      */
@@ -59,10 +59,12 @@ class ClientController extends Controller {
 
     // load view index client list
     public function index() {
-        $clients = $this->clientService->getAllClientUser ();
-        return view ( 'admins.clients.index', [
-                'clients' => $clients
-        ] );
+        try {
+            $clients = $this->clientService->getAllClientUser ();
+            return $this->success($clients);
+        } catch(\Exception $e) {
+            return $this->badRequest($e->getMessage());
+        }
     }
 
     // load view create account
@@ -224,15 +226,16 @@ class ClientController extends Controller {
 
     // API delete client
     public function delete(Request $request) {
-        $result = $this->clientService->deleteClient ( $request->list_id );
-        if ($result['status']) {
-            Session::flash ( 'success', Lang::get ( 'notify.delete_success' ) );
-        } else {
-            Session::flash ( 'error', $result['error'] );
+        try {
+            $result = $this->clientService->deleteClient($request->get('list_id'));
+            if ($result['status']) {
+                return $this->accept(Lang::get('notify.delete_success'));
+            }
+
+            return $this->badRequest($result['error']);
+        } catch(\Exception $e) {
+            return $this->badRequest($e->getMessage());
         }
-        return [
-                'status' => $result
-        ];
     }
 
     // API update status of client

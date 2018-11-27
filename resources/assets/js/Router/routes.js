@@ -4,7 +4,8 @@ Vue.use(VueRouter);
 
 import Main from '../components/Main';
 import Login from '../components/Auth/Login';
-import Dashboard from '../components/Admin/Dashboard/js/index.vue';
+import Dashboard from '../components/Admin/Dashboard/js/index';
+import Client from '../components/Admin/Client/js/index';
 
 const routes = [
     {
@@ -15,7 +16,11 @@ const routes = [
             {
                 path: '/dashboard',
                 component: Dashboard
-            }
+            },
+            {
+                path: '/clients',
+                component: Client
+            },
         ]
     },
     {
@@ -27,5 +32,7 @@ const routes = [
 
 export default new VueRouter({
     routes,
-    mode: 'history'
+    mode: 'history',
+    linkActiveClass: "active",
+    linkExactActiveClass: "exact-active",
 });

@@ -19,13 +19,14 @@
     "vue": "^2.1.10"
   },
   "dependencies": {
+    "font-awesome-sass": "^4.7.0",
     "jquery-validation": "^1.18.0",
     "moment": "^2.22.2",
     "popper.js": "^1.14.5",
     "sass-loader": "^7.1.0",
     "select2": "^4.0.6-rc.1",
     "toastr": "^2.1.4",
-    "vue-i18n": "^8.3.1",
+    "vue-i18n": "^8.3.2",
     "vue-router": "^3.0.1"
   }
 }

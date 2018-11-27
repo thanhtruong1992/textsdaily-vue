@@ -69,36 +69,50 @@ class LoginController extends BaseController {
         return $this->badRequest(Lang::get ( 'notify.login_error' ));
     }
 
-    public function loginWithOtherRole(Request $request, $id) {
-        if (Auth::user()->isGroup1() || Auth::user()->isGroup2()) {
-            if (session()->has('other_role')) {
-                $value = session('other_role', []);
-                $value[] = Auth::user()->name;
-                session(['other_role' => $value]);
-            } else {
-                $value = [Auth::user()->name];
-                session(['other_role' => $value]);
-            }
-            $result = $this->authService->loginOtherRoleWithId($id);
-        }
-        return redirect ()->back ();
-    }
-
-    public function loginWithParentRole(Request $request) {
-        if (session()->has('other_role')) {
-            $value = session('other_role', []);
-            array_pop($value);
-            session(['other_role' => $value]);
-            $result = $this->authService->loginOtherRoleWithId(Auth::user()->parent_id);
-        }
-        return redirect ()->back ();
-    }
-
-    public function getMe(){
+    /**
+     * fn switch account
+     * @param $id
+     * @return object
+     */
+    public function loginWithOtherRole($id) {
         try {
-            if(Auth::check()) {
+            if (Auth::user()->isGroup1() || Auth::user()->isGroup2()) {
+                if (session()->has('other_role')) {
+                    $value = session('other_role', []);
+                    $value[] = Auth::user()->name;
+                    session(['other_role' => $value]);
+                } else {
+                    $value = [Auth::user()->name];
+                    session(['other_role' => $value]);
+                }
+                $this->authService->loginOtherRoleWithId($id);
+
                 $user = Auth::user();
                 $user->childCurrentUser = $this->authService->getAllUserChildrenByParent($user->id);
+                $user->other_role = session()->has('other_role') ? session('other_role') : false;
+                return $this->success($user);
+            }
+            
+            return $this->badRequest();
+        }catch(\Exception $e) {
+            return $this->badRequest($e->getMessage());
+        }
+    }
+    /**
+     * fn return parent
+     * @return object
+     */
+    public function loginWithParentRole() {
+        try {
+            if (session()->has('other_role')) {
+                $value = session('other_role', []);
+                array_pop($value);
+                session(['other_role' => $value]);
+                $this->authService->loginOtherRoleWithId(Auth::user()->parent_id);
+                $user = Auth::user();
+                $user->childCurrentUser = $this->authService->getAllUserChildrenByParent($user->id);
+                $user->other_role = session()->has('other_role') ? session('other_role') : false;
+
                 return $this->success($user);
             }
 
@@ -108,6 +122,27 @@ class LoginController extends BaseController {
         }
     }
 
+    /**
+     * fn get me
+     */
+    public function getMe(){
+        try {
+            if(Auth::check()) {
+                $user = Auth::user();
+                $user->childCurrentUser = $this->authService->getAllUserChildrenByParent($user->id);
+                $user->other_role = session()->has('other_role') ? session('other_role') : false;
+                return $this->success($user);
+            }
+
+            return $this->badRequest();
+        }catch(\Exception $e) {
+            return $this->badRequest($e->getMessage());
+        }
+    }
+
+    /**
+     * fn logout
+     */
     public function logout() {
         Auth::logout();
         session()->forget('other_role');

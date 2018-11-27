@@ -9,6 +9,7 @@
         <title>Outlet for SPA</title>
 
         <link rel="stylesheet" type="text/css" href="css/app.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
         <?php
             
         ?>

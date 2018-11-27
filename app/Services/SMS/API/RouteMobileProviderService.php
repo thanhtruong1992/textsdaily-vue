@@ -154,14 +154,14 @@ class RouteMobileProviderService implements ISMSServiceProvider {
      */
     public function executeRequestAsync($httpMethod, $url, $queryParams = null, $queue) {
         $client = new Client([
-            'timeout' => 120,
-            'connect_timeout' => 60
+            'timeout' => 0,
+            'connect_timeout' => 0
         ]);
 
         if (sizeof($queryParams) > 0) {
             $url .= '?' . http_build_query($queryParams);
         }
-
+        
         // request async
         $promise = $client->requestAsync($httpMethod, $url);
         

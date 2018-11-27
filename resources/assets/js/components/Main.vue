@@ -17,7 +17,9 @@ export default {
 
   data() {
     AuthApi.findMe()
-      .then(res => {})
+      .then(res => {
+        // this.$router.push("/dashboard");
+      })
       .catch(err => {
         this.$router.push("/login");
       });

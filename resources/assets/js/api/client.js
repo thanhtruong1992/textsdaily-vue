@@ -1,13 +1,11 @@
 import ApiService from './index';
 
-class AuthApi {
-    login (params) {
+class ClientApi {
+    getAll () {
         return new Promise((resolve, reject) => {
-            ApiService.post('/login', params)
+            ApiService.get('/client')
                 .then(res => {
-                    var data = res.data.data;
-                    localStorage.setItem('auth', data);
-                    resolve(data);
+                    resolve(res.data.data);
                 })
                 .catch(err => {
                     reject(err.response.data);
@@ -15,28 +13,11 @@ class AuthApi {
         });
     }
 
-    findMe () {
+    get (id) {
         return new Promise((resolve, reject) => {
-            ApiService.get('/me')
+            ApiService.get('/client/' + id)
                 .then(res => {
-                    var data = res.data.data;
-                    localStorage.setItem('auth', JSON.stringify(data));
-                    resolve(data);
-                })
-                .catch(err => {
-                    localStorage.removeItem('auth');
-                    reject(err.response.data);
-                });
-        });
-    }
-
-    switchAccount (id) {
-        return new Promise((resolve, reject) => {
-            ApiService.get('/login-with-other-role/' + id)
-                .then(res => {
-                    var data = res.data.data;
-                    localStorage.setItem('auth', JSON.stringify(data));
-                    resolve(data);
+                    resolve(res.data.data);
                 })
                 .catch(err => {
                     reject(err.response.data);
@@ -44,13 +25,11 @@ class AuthApi {
         });
     }
 
-    returnParent () {
+    create (params) {
         return new Promise((resolve, reject) => {
-            ApiService.get('/return-parent')
+            ApiService.post('/client', params)
                 .then(res => {
-                    var data = res.data.data;
-                    localStorage.setItem('auth', JSON.stringify(data));
-                    resolve(data);
+                    resolve(res.data.data);
                 })
                 .catch(err => {
                     reject(err.response.data);
@@ -58,12 +37,35 @@ class AuthApi {
         });
     }
 
-    logOut () {
+    update (id, params) {
         return new Promise((resolve, reject) => {
-            ApiService.get('/logout')
+            ApiService.put('/client/' + id, params)
                 .then(res => {
-                    localStorage.removeItem('auth');
-                    resolve();
+                    resolve(res.data.data);
+                })
+                .catch(err => {
+                    reject(err.response.data);
+                });
+        });
+    }
+
+    destroy (id) {
+        return new Promise((resolve, reject) => {
+            ApiService.destroy('/client/' + id)
+                .then(res => {
+                    resolve(res.data.data);
+                })
+                .catch(err => {
+                    reject(err.response.data);
+                });
+        });
+    }
+
+    destroyMultiple (params) {
+        return new Promise((resolve, reject) => {
+            ApiService.post('/client/delete', params)
+                .then(res => {
+                    resolve(res.data);
                 })
                 .catch(err => {
                     reject(err.response.data);
@@ -72,4 +74,4 @@ class AuthApi {
     }
 }
 
-export default new AuthApi();
+export default new ClientApi();
