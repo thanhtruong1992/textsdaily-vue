@@ -102,17 +102,11 @@
 import AuthApi from "../api/auth";
 
 export default {
-  props: {
-    user: {
-      type: Object,
-      default: null
-    }
-  },
-
   data() {
+    var user = JSON.parse(localStorage.getItem('auth'));
     return {
-      currentUser: this.user,
-      listUser: this.user.childCurrentUser
+      currentUser: user,
+      listUser: user.childCurrentUser
     };
   },
 

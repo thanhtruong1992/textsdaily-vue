@@ -6,13 +6,13 @@
         <div class="header-button">
             <div class="col">
                 <div class="row justify-content-start">
-                    <a id="deleteClient" class="client-action mr-1 ml-2" v-on:click="isOpen = true">
+                    <a id="deleteClient" class="client-action mr-1 ml-2" v-on:click="actionDelete()">
                         <u>{{ $t("client.delete") }}</u>
                     </a>
-                    <a id="enableClient" class="client-action mr-1 ml-2" href="#">
+                    <a id="enableClient" class="client-action mr-1 ml-2" v-on:click="actionEnable()">
                         <u>{{ $t("client.enable") }}</u>
                     </a>
-                    <a id="disableClient" class="client-action mr-1 ml-2" href="#">
+                    <a id="disableClient" class="client-action mr-1 ml-2" v-on:click="actionDisable()">
                         <u>{{ $t("client.disable") }}</u>
                     </a>
                     <label class="custom-control custom-checkbox ml-2">
@@ -89,5 +89,7 @@
             </div>
         </div>
     </div>
-    <modal-custom v-show="isOpen" title="Delete Client" content="Are you sure to delete the selected clients?" v-bind:is-open="isOpen" :accept="deleteClient" :cancel="() => {isOpen = false}"></modal-custom>
+    <modal-custom v-show="isDelete" title="Delete Client" content="Are you sure to delete the selected clients?" :is-open="isDelete" :accept="deleteClient" :cancel="() => {isDelete = false}"></modal-custom>
+    <modal-custom v-show="isEnable" title="Enable Client" content="Are you sure to enable the selected clients?" :is-open="isEnable" :accept="enableClient" :cancel="() => {isEnable = false}"></modal-custom>
+    <modal-custom v-show="isDisable" title="Disable Client" content="Are you sure to disable the selected clients?" :is-open="isDisable" :accept="disableClient" :cancel="() => {isDisable = false}"></modal-custom>
 </div>

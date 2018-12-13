@@ -6,7 +6,7 @@ class AuthApi {
             ApiService.post('/login', params)
                 .then(res => {
                     var data = res.data.data;
-                    localStorage.setItem('auth', data);
+                    localStorage.setItem('auth', JSON.stringify(data));
                     resolve(data);
                 })
                 .catch(err => {

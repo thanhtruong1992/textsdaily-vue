@@ -1,7 +1,6 @@
 import ApiService from './index';
 
 class DashboardApi {
-
     totalSend (data) {
         return new Promise((resolve, reject) => {
             ApiService.get('/campaigns/total-send', data)
@@ -9,7 +8,7 @@ class DashboardApi {
                     resolve(res.data);
                 })
                 .catch(err => {
-                    reject(errerr.response.data);
+                    reject(err.response.data);
                 });
         });
     }

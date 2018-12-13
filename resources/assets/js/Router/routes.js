@@ -12,16 +12,30 @@ const routes = [
         path: '/',
         name: 'main',
         component: Main,
+        meta: {
+            requiresLogin: true,
+        },
         children : [
             {
                 path: '/dashboard',
-                component: Dashboard
+                component: Dashboard,
+                meta: {
+                    requiresLogin: true,
+                    requiredPermissions: ['GROUP1', 'GROUP2'],
+                    permissionType: 'AtLeastOne',
+                },
             },
             {
                 path: '/clients',
-                component: Client
+                component: Client,
+                meta: {
+                    requiresLogin: true,
+                    requiredPermissions: ['GROUP1', 'GROUP2'],
+                    permissionType: 'AtLeastOne',
+                },
             },
-        ]
+        ],
+        
     },
     {
         path: '/login',
@@ -29,6 +43,7 @@ const routes = [
         component: Login
     },
 ];
+
 
 export default new VueRouter({
     routes,

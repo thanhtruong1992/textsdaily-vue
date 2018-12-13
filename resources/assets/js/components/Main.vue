@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <Header v-bind:user="user"></Header> 
+      <Header></Header> 
       <router-view></router-view>
     </div>
   </div>
@@ -16,16 +16,7 @@ export default {
   },
 
   data() {
-    AuthApi.findMe()
-      .then(res => {
-        // this.$router.push("/dashboard");
-      })
-      .catch(err => {
-        this.$router.push("/login");
-      });
-    return {
-      user: JSON.parse(localStorage.getItem('auth')),
-    };
+    return {};
   }
 };
 </script>

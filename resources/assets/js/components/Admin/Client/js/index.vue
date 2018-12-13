@@ -14,7 +14,11 @@ export default {
         var data = {
             clients: null,
             currentUser: JSON.parse(localStorage.getItem('auth')),
-            isOpen: false,
+            modalCustom: {
+                isOpen: false,
+                titleModal: null,
+                contentModal: null,
+            }
         }
         // get client
         ClientApi.getAll()
@@ -28,8 +32,47 @@ export default {
     },
 
     methods: {
-        actionDelete () {
-            this.isOpen = true;
+        openModal (key) {
+            var listChecked = $('.frmClientCheck:checked');
+            if(listChecked.length > 0) {
+                switch (key) {
+                    case 'delete':
+                        this.modalCustom.titleModal = 'Delete Client';
+                        this.modalCustom.contentModal = 'Are you sure to delete the selected clients?';
+                    break;
+                    case 'enable':
+                        this.modalCustom.titleModal = 'Delete Client';
+                        this.modalCustom.contentModal = 'Are you sure to enable the selected clients?';
+                    break;
+                    case 'disable':
+                        this.modalCustom.titleModal = 'Delete Client';
+                        this.modalCustom.contentModal = 'Are you sure to disable the selected clients?';
+                    break;
+                    default:
+                        this.modalCustom.titleModal = 'Delete Client';
+                        this.modalCustom.contentModal = 'Are you sure to delete the selected clients?';
+                    break;
+                }
+            }
+            
+            var listChecked = $('.frmClientCheck:checked');
+            if(listChecked.length > 0) {
+                this.isDelete = true;
+            }
+        },
+
+        actionEnable () {
+            var listChecked = $('.frmClientCheck:checked');
+            if(listChecked.length > 0) {
+                this.isEnable = true;
+            }
+        },
+
+        actionDisable () {
+            var listChecked = $('.frmClientCheck:checked');
+            if(listChecked.length > 0) {
+                this.isDisable = true;
+            }
         },
 
         deleteClient (res) {
@@ -47,7 +90,17 @@ export default {
                         content: res.message
                     });
                 });
-            this.isOpen = false;
+            this.isDelete = false;
+        },
+
+        enableClient () {
+            var listClientIDSelected = this.getClientWasChecked();
+
+            this.isEnable = false;
+        },
+
+        disableClient () {
+            var listClientIDSelected = this.getClientWasChecked();
         },
 
         getClientWasChecked() {

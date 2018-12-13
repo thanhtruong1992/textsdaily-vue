@@ -58,7 +58,9 @@ class LoginController extends BaseController {
     public function login(Request $request) {
         $result = $this->authService->loginUser( $request );
         if (!!$result->status) {
-            Session::flash ( 'success', Lang::get ( 'notify.login_user' ) );
+            $user = Auth::user();
+            $user->childCurrentUser = $this->authService->getAllUserChildrenByParent($user->id);
+            $user->other_role = session()->has('other_role') ? session('other_role') : false;
             return $this->success(Auth::user());
         }
 

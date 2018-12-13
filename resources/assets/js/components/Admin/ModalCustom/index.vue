@@ -4,7 +4,7 @@
             <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="titleModalConfirm"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" v-on:click="cancelModal()" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -12,7 +12,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-secondary" v-on:click="cancelModal()">No</button>
                 <button type="button" class="btn btn-example" v-on:click="acceptModal()">Yes</button>
             </div>
             </div>
@@ -56,29 +56,29 @@ export default {
     methods: {
         acceptModal () {
             this.closeModal();
-            if(this.accept) {
-                this.accept('test');
+            if(_.isFunction(this.accept)) {
+                this.accept();
             }
             
         },
 
         cancelModal () {
+            if(_.isFunction(this.cancel)) {
+                this.cancel();
+            }
             this.closeModal();
         },
 
         closeModal () {
-            $('#modalConfirm').modal('hide');
+            $('.modalConfirm').modal('hide');
         }
     },
 
-    mounted () {
-        $('#modalConfirm').on('hide.bs.modal', function (e) {
-            debugger
-        });
-    },
+    mounted () {},
 
     watch: {
         isOpen: function(newVal, oldVal) {
+            debugger
             if(!!newVal) {
                 $("#titleModalConfirm").html(this.titleData);
                 $("#contentModalConfirm").html(this.contentData);
